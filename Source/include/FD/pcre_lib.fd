@@ -1,0 +1,23 @@
+##base _PCREBase
+##bias 30
+##private
+PCREARexxQuery()()
+##public
+PCREVersion()()
+PCRECompileA(patt,err,errofs,attrs)(a0,a1,a2,a3)
+PCREExec(re,extra,subject,len,start,opts,ofs,ofsc)(a0,a1,a2,d0,d1,d2,a3,d3)
+PCREStudy(re,opts,err)(a0,d0,a1)
+PCREInfo(re,optptr,first)(a0,a1,a2)
+PCREFullInfo(re,extra,what,where)(a0,a1,d0,a2)
+PCREConfig(what,where)(d0,a0)
+PCREGetStringNumber(code,string)(a0,a1)
+PCRECopySubString(subject,ovec,scount,snum,buf,size)(a0,a1,d0,d1,a2,d2)
+PCRECopyNamedSubString(code,subject,ovec,scount,sname,buf,size)(a0,a1,a2,d0,a3,d1,d2)
+PCREGetSubStringList(subject,ovec,scount,list)(a0,a1,d0,a2)
+PCREFreeSubStringList(ptr)(a0)
+PCREGetSubString(subject,ovec,scount,snum,strptr)(a0,a1,d0,d1,a2)
+PCREGetNamedSubString(code,subject,ovec,scount,sname,sptr)(a0,a1,a2,d0,a3,d1)
+PCREFreeSubString(ptr)(a0)
+PCREFree(re)(a0)
+PCREGetString(id)(d0)
+##end
