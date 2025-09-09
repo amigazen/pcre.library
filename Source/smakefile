@@ -1,7 +1,7 @@
 # pcre.library smake file
 
 # Target
-TARGET = LIBS:pcre.library
+TARGET = pcre.library
 
 # Compiler
 C_COMPILER = sc
@@ -18,7 +18,7 @@ COMMENTNEST IDLEN=128 IGNORE=315 IGNORE=317 $(C_OPTIMIZE)
 
 # Assembler
 ASSEMBLER = a68k
-ASSEMBLER_OPTS = -iainc:
+ASSEMBLER_OPTS = -iNDK:Include_i
 
 # Linker
 LINKER = slink
@@ -29,7 +29,7 @@ LINKER_OPTS = NOICONS
 OBJECTS = libent.o libinit.o endcode.o init.o utils.o alloc.o loc.o maketables.o study.o get.o dispatch.o pcrerx.o pcre.o
 
 # Libs
-LIBS = LIB:sc.lib LIB:amiga.lib LIB:rxtoolkit.lib LIB:debug.lib
+LIBS = sc:lib/sc.lib LIB:amiga.lib LIB:rxtoolkit.lib LIB:debug.lib
 
 # Built file
 $(TARGET): $(OBJECTS) $(LIBS)
@@ -44,6 +44,19 @@ FROM $(OBJECTS) TO $(TARGET) LIB $(LIBS) $(LINKER_OPTS)
 
 .asm.o:
       $(ASSEMBLER) $(ASSEMBLER_OPTS) $*.asm
+
+clean:
+      -delete $(OBJECTS) $(TARGET)
+
+install:
+      copy $(TARGET) /SDK/Libs/
+
+help:
+      @echo "Available targets:"
+      @echo "  all      - Build pcre.library"
+      @echo "  clean    - Remove object files and executable"
+      @echo "  install  - Install pcre.library to LIBS:"
+      @echo "  help     - Show this help message"
 
 # Dependences
 libent.o:       libent.asm pcre.library_rev.i
